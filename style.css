@@ -1,0 +1,704 @@
+:root {
+  --bg: #120d05;
+  --bg-alt: #26170a;
+  --text: #fff7e6;
+  --muted: #d8c8a1;
+  --gold: #e6bf54;
+  --rose: #f08aa2;
+  --card: rgba(255, 234, 186, 0.09);
+  --border: rgba(230, 191, 84, 0.26);
+  --shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(140deg, var(--bg), var(--bg-alt));
+  color: var(--text);
+}
+
+img,
+canvas {
+  max-width: 100%;
+  display: block;
+}
+
+/* Preloader */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at center, #2e1f0a, #120b05);
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#preloader.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-box {
+  text-align: center;
+  width: min(92vw, 520px);
+  padding: 0 12px;
+}
+
+.loader-script {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2rem, 7vw, 4rem);
+  color: #f4d583;
+}
+
+.load-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  margin-top: 14px;
+  overflow: hidden;
+}
+
+#loadBarFill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #d4af37, #ffb7ca);
+}
+
+/* Global */
+#particle-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.section {
+  min-height: auto;
+  padding: clamp(72px, 10vw, 100px) clamp(14px, 5vw, 8%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.section-title h2 {
+  font-family: "Cinzel", serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  margin-bottom: 8px;
+}
+
+.section-title p {
+  color: var(--muted);
+}
+
+/* Controls */
+.top-controls {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  z-index: 200;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.glass-btn {
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+}
+
+.glass-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.progress-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  z-index: 300;
+}
+
+#scrollProgress {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--rose));
+}
+
+/* Hero */
+.hero {
+  min-height: 100dvh;
+  align-items: center;
+  text-align: center;
+  padding-top: 110px;
+  padding-bottom: 50px;
+  position: relative;
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 157, 188, 0.22),
+      transparent 45%
+    ),
+    radial-gradient(circle at 80% 30%, rgba(230, 191, 84, 0.24), transparent 45%);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.52));
+  z-index: -1;
+}
+
+.guest-line {
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.brand-script {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.2rem, 8vw, 6rem);
+  line-height: 1.1;
+}
+
+.typing-text {
+  min-height: 56px;
+  margin: 10px auto 8px;
+  color: var(--muted);
+  font-size: clamp(1rem, 2.3vw, 1.35rem);
+  max-width: 920px;
+}
+
+.couple-names {
+  font-family: "Cinzel", serif;
+  margin-bottom: 20px;
+  font-size: clamp(1rem, 3vw, 2rem);
+}
+
+.couple-names span {
+  color: var(--rose);
+  margin: 0 8px;
+}
+
+.cta-btn {
+  border: none;
+  background: linear-gradient(135deg, var(--gold), #f6d365);
+  color: #251607;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 12px 24px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 20px;
+  font-size: 1.8rem;
+  animation: bounce 1.6s infinite;
+}
+
+/* Couple */
+.couple-grid {
+  display: grid;
+  grid-template-columns: 1fr !important;
+  gap: 16px;
+}
+
+.person-card {
+  text-align: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+
+.img-wrap {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(230, 191, 84, 0.35);
+  background: #1a1208;
+  width: 100%;
+  height: auto;
+}
+
+/* Full image visible — no crop */
+.img-wrap img {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: center top;
+  background: #1a1208;
+  transition: transform 0.45s ease;
+  display: block;
+}
+
+.person-card:hover .img-wrap img {
+  transform: scale(1.02);
+}
+
+.name {
+  margin-top: 12px;
+  font-family: "Cinzel", serif;
+  font-size: 1.45rem;
+}
+
+.role {
+  color: var(--muted);
+}
+
+.heart-divider {
+  text-align: center;
+  color: var(--rose);
+  font-size: 2rem;
+  transform: rotate(90deg);
+}
+
+/* Details */
+.details-grid,
+.schedule-grid {
+  display: grid;
+  grid-template-columns: 1fr !important;
+  gap: 12px;
+}
+
+.detail-card,
+.schedule-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+}
+
+.icon {
+  font-size: 1.8rem;
+}
+
+.highlight-date {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.calendar-buttons {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.calendar-buttons .glass-btn {
+  text-align: center;
+}
+
+/* Traditional + Cards */
+.tradition-card,
+.message-card,
+.location-card,
+.rsvp-form,
+.blessings-wrap,
+.dress-note {
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.ganesh-heading {
+  font-family: "Tiro Devanagari Hindi", serif;
+  color: var(--gold);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  margin-bottom: 10px;
+}
+
+.hindi-text {
+  font-family: "Tiro Devanagari Hindi", serif;
+  line-height: 1.75;
+  font-size: 15px;
+  white-space: pre-line;
+}
+
+/* Gallery */
+.slider {
+  width: 100%;
+  position: relative;
+}
+
+.slides {
+  position: relative;
+  width: 100%;
+  /* Auto height — portrait images ko crop nahi karega */
+  height: auto;
+  min-height: 220px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0d0a04;
+}
+
+/* Sizer image — height determine karta hai silently */
+.slides::after {
+  content: '';
+  display: block;
+  padding-top: 0;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  background: #0d0a04;
+  opacity: 0;
+  transform: translateX(30px) scale(0.97);
+  transition: opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  z-index: 2;
+  position: relative; /* active slide determines height */
+}
+
+.slide.exit {
+  opacity: 0;
+  transform: translateX(-30px) scale(0.97);
+  z-index: 1;
+  position: absolute;
+}
+
+.kenburns.active {
+  animation: kenburns 8s ease-in-out infinite alternate;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.prev {
+  left: 6px;
+}
+
+.next {
+  right: 6px;
+}
+
+.dots {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+}
+
+.dot.active {
+  background: var(--gold);
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.lightbox.show {
+  display: flex;
+}
+
+#lightboxImg {
+  max-width: 96vw;
+  max-height: 72vh;
+  border-radius: 10px;
+}
+
+#lightboxClose {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* Countdown */
+.timer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.time-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 10px;
+  text-align: center;
+}
+
+.time-box span {
+  font-size: clamp(1.4rem, 7vw, 2rem);
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* Forms */
+.rsvp-form {
+  max-width: 620px;
+  margin: auto;
+  display: grid;
+  gap: 12px;
+}
+
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea,
+.wish-form input,
+.wish-form textarea {
+  width: 100%;
+  padding: 12px 13px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  outline: none;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-size: 16px;
+}
+
+#wishForm {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.wish-list {
+  display: grid;
+  gap: 10px;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.wish-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+#rsvpStatus {
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Ending */
+.ending-section {
+  min-height: 72vh;
+  position: relative;
+  overflow: hidden;
+}
+
+#confetti-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ending-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.ending-content h2 {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+}
+
+/* Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in {
+  transform: none;
+}
+
+.slide-left {
+  transform: translateX(-26px);
+}
+
+.slide-right {
+  transform: translateX(26px);
+}
+
+.zoom-in {
+  transform: scale(0.96);
+}
+
+/* Keyframes */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+@keyframes kenburns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08) translate(1.2%, 1.2%); }
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+  .glass-btn {
+    padding: 7px 10px;
+    font-size: 11px;
+  }
+  .brand-script {
+    font-size: 2.2rem;
+  }
+  .couple-names {
+    font-size: 1rem;
+  }
+  .timer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablet */
+@media (min-width: 601px) and (max-width: 991px) {
+  .section {
+    padding: 86px 5%;
+  }
+  .details-grid,
+  .schedule-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .timer-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+  .top-controls {
+    left: auto;
+    width: min(92vw, 520px);
+  }
+
+  .hero {
+    min-height: 100vh;
+  }
+
+  .couple-grid {
+    grid-template-columns: 1fr auto 1fr !important;
+    gap: 24px;
+  }
+
+  .heart-divider {
+    transform: rotate(0);
+    align-self: center;
+  }
+
+  /* Keep full photo visible on desktop too */
+  .img-wrap img {
+    max-height: none;
+    object-fit: contain;
+    object-position: center top;
+  }
+
+  .details-grid,
+  .schedule-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .slides {
+    height: auto;
+    min-height: 320px;
+    border-radius: 20px;
+  }
+
+  .nav {
+    width: 42px;
+    height: 42px;
+  }
+
+  .prev { left: 10px; }
+  .next { right: 10px; }
+
+  .calendar-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="royal-gold">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>| Wedding Invitation| By Ayansh</title>
+  <meta name="description" content="Wedding invitation of Santosh Yadav and Rubi Yadav on 05 May 2026 at Saijal Pur, Gonda." />
+  <meta property="og:title" content="Santosh ❤️ Rubi | Wedding Invitation" />
+  <meta property="og:description" content="Join us on 05 May 2026 at Saijal Pur, Gonda." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" />
+  <meta name="theme-color" content="#d4af37" />
+  <link rel="manifest" href="manifest.json" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader" aria-hidden="true">
+    <div class="loader-box">
+      <h1 class="loader-script">Santosh ❤️ Rubi</h1>
+      <p>Loading Invitation...</p>
+      <div class="load-bar"><span id="loadBarFill"></span></div>
+    </div>
+  </div>
+
+  <!-- Ambient particles -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Controls -->
+  <div class="top-controls">
+    <button id="musicToggle" class="glass-btn" aria-label="Toggle music">🔊 Music</button>
+    <button id="langToggle" class="glass-btn" aria-label="Toggle language">हिं / EN</button>
+    <button id="shareBtn" class="glass-btn" aria-label="Share invitation">📤 Share</button>
+  </div>
+
+  <div class="progress-wrap"><div id="scrollProgress"></div></div>
+
+  <!-- Hero -->
+  <header id="home" class="section hero">
+    <div class="overlay"></div>
+    <div class="hero-content reveal fade-in">
+      <p class="guest-line" id="guestLine">Dear Guest,</p>
+      <h1 class="brand-script">Wedding Invitation</h1>
+      <p id="typingText" class="typing-text"></p>
+      <h2 class="couple-names">Santosh Yadav <span>❤</span> Rubi Yadav</h2>
+      <a href="#couple" class="cta-btn">Begin the Story</a>
+    </div>
+    <div class="scroll-indicator">⌄</div>
+  </header>
+
+  <!-- Couple -->
+  <section id="couple" class="section">
+    <div class="section-title reveal rise-up">
+      <h2>Two Hearts, One Destiny</h2>
+      <p>A celebration of love, family and blessings.</p>
+    </div>
+
+    <div class="couple-grid">
+      <article class="person-card reveal slide-left">
+        <div class="img-wrap">
+         <img loading="lazy" src="assets/images/groom.jpg" alt="Groom Santosh Yadav" />
+        </div>
+        <h3 class="name">Santosh Yadav</h3>
+        <p class="role">The Groom</p>
+      </article>
+
+      <div class="heart-divider reveal zoom-in">❤</div>
+
+      <article class="person-card reveal slide-right">
+        <div class="img-wrap">
+          <img loading="lazy" src="assets/images/bride.jpg" alt="Bride Rubi Yadav" />
+        </div>
+        <h3 class="name">Rubi Yadav</h3>
+        <p class="role">The Bride</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Wedding details -->
+  <section id="details" class="section">
+    <div class="section-title reveal rise-up">
+      <h2>Wedding Details</h2>
+      <p>Your presence will make our day unforgettable.</p>
+    </div>
+
+    <div class="details-grid">
+      <div class="detail-card reveal rise-up"><span class="icon">📅</span><h4>Date</h4><p class="highlight-date">05 May 2026</p></div>
+      <div class="detail-card reveal rise-up"><span class="icon">⏰</span><h4>Time</h4><p>Evening Onwards</p></div>
+      <div class="detail-card reveal rise-up"><span class="icon">📍</span><h4>Venue</h4><p>Saijal Pur, Gonda</p></div>
+    </div>
+
+    <div class="calendar-buttons reveal zoom-in">
+      <a class="glass-btn" id="googleCalBtn" target="_blank" rel="noopener noreferrer">Add to Google Calendar</a>
+      <a class="glass-btn" id="icsBtn" download="Santosh-Rubi-Wedding.ics">Download Calendar File</a>
+    </div>
+  </section>
+
+  <!-- Traditional -->
+  <section id="tradition" class="section">
+    <div class="tradition-card reveal zoom-in">
+      <h2 class="ganesh-heading">श्री गणेशाय नमः</h2>
+      <p>May this sacred union be blessed with peace, prosperity, and eternal joy.</p>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="section gallery-section">
+    <div class="section-title reveal rise-up">
+      <h2>Memories & Moments</h2>
+      <p>A cinematic glimpse of love and celebration.</p>
+    </div>
+
+    <div class="slider reveal fade-in" aria-label="Photo gallery carousel">
+      <div class="slides">
+        <img class="slide active kenburns" src="assets/images/1.jpg" alt="Memory 1" />
+        <img class="slide kenburns" src="assets/images/2.jpg" alt="Memory 2" />
+        <img class="slide kenburns" src="assets/images/3.jpg" alt="Memory 3" />
+        <img class="slide kenburns" src="assets/images/4.jpg" alt="Memory 4" />
+      </div>
+
+      <button class="nav prev" id="prevSlide" aria-label="Previous slide">❮</button>
+      <button class="nav next" id="nextSlide" aria-label="Next slide">❯</button>
+      <div class="dots" id="dots"></div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image Preview">
+    <button id="lightboxClose" aria-label="Close preview">✕</button>
+    <img id="lightboxImg" src="" alt="Gallery preview" />
+  </div>
+
+  <!-- Hindi Invite -->
+  <section id="message" class="section">
+    <div class="message-card reveal zoom-in">
+      <h2>सादर आमंत्रण</h2>
+      <p id="hindiInviteText" class="hindi-text"></p>
+    </div>
+  </section>
+
+  <!-- Schedule -->
+  <section id="schedule" class="section">
+    <div class="section-title reveal rise-up">
+      <h2>Event Schedule</h2>
+      <p>Celebrate each ritual with us.</p>
+    </div>
+
+    <div class="schedule-grid">
+      <div class="schedule-card reveal slide-left"><h4>बारात</h4><p>06:00 PM</p></div>
+      <div class="schedule-card reveal rise-up"><h4>वरमाला</h4><p>11:00 PM</p></div>
+      <div class="schedule-card reveal slide-right"><h4>रात्रि भोज</h4><p>09:00 PM</p></div>
+    </div>
+
+    <div class="dress-note reveal zoom-in">
+      <h4>Dress Code</h4>
+      <p>Traditional / Ethnic Elegance</p>
+      <small>आपका आशीर्वाद ही हमारे लिए सबसे बड़ा उपहार है।</small>
+    </div>
+  </section>
+
+  <!-- Countdown -->
+  <section id="countdown" class="section">
+    <div class="section-title reveal rise-up"><h2>Countdown to Forever</h2></div>
+    <div class="timer-grid reveal rise-up">
+      <div class="time-box"><span id="days">00</span><p>Days</p></div>
+      <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
+      <div class="time-box"><span id="minutes">00</span><p>Minutes</p></div>
+      <div class="time-box"><span id="seconds">00</span><p>Seconds</p></div>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section id="location" class="section">
+    <div class="section-title reveal rise-up">
+      <h2>Venue</h2>
+      <p>Saijal Pur, Gonda</p>
+    </div>
+    <div class="location-card reveal zoom-in">
+      <p>Tap below for directions</p>
+      <button id="locationBtn" class="cta-btn">View Location</button>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp" class="section">
+    <div class="section-title reveal rise-up">
+      <h2>RSVP</h2>
+      <p>Please confirm your presence.</p>
+    </div>
+    <form id="rsvpForm" class="rsvp-form reveal fade-in">
+      <input required type="text" name="name" placeholder="Your Name" />
+      <input required type="number" name="guests" placeholder="No. of Guests" min="1" max="20" />
+      <select name="attending" required>
+        <option value="">Will you attend?</option>
+        <option>Yes, with pleasure</option>
+        <option>Sorry, unable to attend</option>
+      </select>
+      <textarea name="message" rows="4" placeholder="Blessings / Message"></textarea>
+      <button type="submit" class="cta-btn">Submit RSVP</button>
+      <p id="rsvpStatus"></p>
+    </form>
+  </section>
+
+  <!-- Blessings wall -->
+  <section id="blessings" class="section">
+    <div class="section-title reveal rise-up">
+      <h2>Blessings Wall</h2>
+      <p>Leave your wishes for the couple.</p>
+    </div>
+    <div class="blessings-wrap reveal fade-in">
+      <form id="wishForm" class="wish-form">
+        <input id="wishName" type="text" placeholder="Your Name" required />
+        <textarea id="wishText" rows="3" placeholder="Your Blessings..." required></textarea>
+        <button type="submit" class="cta-btn">Post Blessing</button>
+      </form>
+      <div id="wishList" class="wish-list"></div>
+    </div>
+  </section>
+
+  <!-- Ending -->
+  <footer id="ending" class="section ending-section">
+    <canvas id="confetti-canvas"></canvas>
+    <div class="ending-content reveal fade-in">
+      <h2>Thank You</h2>
+      <p>We await your presence and blessings.</p>
+    </div>
+  </footer>
+
+  <audio id="bgMusic" preload="auto">
+    <source src="assets/music/intro.mp3" type="audio/mpeg" />
+  </audio>
+  <script src="config.js"></script>
+  <script src="rsvp.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
